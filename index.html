@@ -22,7 +22,6 @@
                 <img src="images/logo.png" alt="Logo">
             </div>
 
-            <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
 
             <nav class="main-nav" role="navigation" aria-label="Main navigation">
                 <ul class="nav-links">
@@ -127,29 +126,32 @@
                         </ul>
                     </li> -->
 
-                    <li class="dropdown">
+                    <li class="dropdown language-item">
                         <div class="language-switcher" title="Change Language">
                             <img src="https://flagcdn.com/qa.svg" alt="Qatar Flag">
                         </div>
 
                         <img src="images/accessibility.png" id="user-img" title="Accessibility Options">
                     </li>
-
-                    <!-- <li class="dropdown">
-                        <img src="accessibility.png" id="user-img">
-                        <ul class="dropdown-menu">
-                            <li>Our Mission</li>
-                            <li>Leadership</li>
-                            <li>Contact</li>
-                        </ul>
-                    </li> -->
                 </ul>
             </nav>
 
 
             <div class="nav-actions">
-                <button class="btn">Create an Account</button>
+                <!-- Search Box -->
+                <div class="search-box">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <!-- Create Account Button -->
+                <button class="btn create-ac">Create an Account</button>
             </div>
+
+            <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger">☰</span>
+            </button>
+            <!-- <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button> -->
         </div>
     </header>
 

@@ -1,3 +1,42 @@
+window.addEventListener("scroll", function () {
+    const header = document.querySelector(".navbar");
+    if (window.scrollY > 20) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+const navToggleBtn = document.querySelector('.nav-toggle');
+
+navToggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    // toggle aria-expanded
+    const expanded = navToggleBtn.getAttribute('aria-expanded') === 'true';
+    navToggleBtn.setAttribute('aria-expanded', String(!expanded));
+
+    // toggle class to track open/close state
+    navToggleBtn.classList.toggle('open');
+
+    // change icon inside button
+    navToggleBtn.querySelector('.hamburger').textContent = navToggleBtn.classList.contains('open') ? '✖' : '☰';
+
+    // toggle nav menu
+    document.body.classList.toggle('nav-open');
+});
+
+// Close nav if clicking outside
+document.addEventListener('click', () => {
+    if (document.body.classList.contains('nav-open')) {
+        document.body.classList.remove('nav-open');
+        navToggleBtn.classList.remove('open');
+        navToggleBtn.setAttribute('aria-expanded', 'false');
+        navToggleBtn.querySelector('.hamburger').textContent = '☰';
+    }
+});
+
+
 // ------------------------
 // CAROUSEL SLIDER
 // ------------------------
@@ -46,15 +85,6 @@ setInterval(() => {
 
 // Initial slide
 showSlide(index);
-
-/* Mobile nav + dropdown behaviour */
-const navToggle = document.querySelector('.nav-toggle');
-navToggle?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!expanded));
-    document.body.classList.toggle('nav-open');
-});
 
 // Dropdown toggles (open/close on click) - supports mobile and desktop click toggling
 document.querySelectorAll('.dropdown').forEach(drop => {
