@@ -526,12 +526,13 @@ body {
 .subheading {
     font-size: 22px;
     /* font-weight: lighter; */
-    width: 46%;
-    margin-top: 9px;
+    /* width: 46%;
+    margin-top: 9px; */
 }
 
 .first-col {
-    padding: 40px;
+    /* padding: 40px; */
+    padding: 40px 40px 40px 80px;
 }
 
 .sec-col {
@@ -611,8 +612,8 @@ body {
 }
 
 .desc {
-    flex: 1 1 45%;
-    /* padding: 16px 24px; */
+    flex: 1 1 20%;
+    padding: 40px;
     min-width: 220px;
 }
 
@@ -735,7 +736,7 @@ body {
 /* ---  JOIN  US SECTION --- */
 .hero-section {
     background: linear-gradient(to right, #ab98d980, #d2aa994f);
-    padding: 70px 0 0 0;
+    padding: 30px 0 0 0;
     border-radius: 25px;
     text-align: center;
     position: relative;
