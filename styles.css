@@ -1161,6 +1161,12 @@ body {
     line-height: 1.5;
 }
 
+.news-card:hover {
+    transform: scale(1.1);
+    /* 10% bigger */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
 /* DESCRIPTION SCROLL */
 .news-desc {
     max-height: 130px;
@@ -1627,7 +1633,7 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
 }
 
 .classy-newsletter h4 {
