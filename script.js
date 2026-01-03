@@ -7,6 +7,58 @@ window.addEventListener("scroll", function () {
     }
 });
 
+// Dropdown toggles (open/close on click) - supports mobile and desktop click toggling
+document.querySelectorAll('.dropdown').forEach(drop => {
+    drop.addEventListener('click', function (e) {
+        e.stopPropagation();
+        this.classList.toggle('open');
+
+        // close others
+        document.querySelectorAll('.dropdown').forEach(other => {
+            if (other !== this) other.classList.remove('open');
+        });
+    });
+});
+
+// Close dropdowns / nav when clicking outside
+document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    if (document.body.classList.contains('nav-open')) {
+        document.body.classList.remove('nav-open');
+        navToggle?.setAttribute('aria-expanded', 'false');
+    }
+});
+
+const dropdowns = document.querySelectorAll('.has-caret');
+
+dropdowns.forEach(drop => {
+    drop.addEventListener('mouseenter', () => {
+        // Remove 'open' class from all dropdowns
+        dropdowns.forEach(d => d.classList.remove('open'));
+
+        // Add 'open' to the hovered one
+        drop.classList.add('open');
+    });
+
+    drop.addEventListener('mouseleave', () => {
+        // Optional: remove open when mouse leaves
+        drop.classList.remove('open');
+    });
+});
+
+// Smooth scroll to section
+// nav why-qatar scroll to why qatar section
+document.querySelector('.why-qatar').addEventListener('click', () => {
+    const section = document.querySelector('.container-fluid');
+    section.scrollIntoView({ behavior: 'smooth' });
+});
+
+// nav how we help scroll to how we help section
+document.querySelector('.how-we-help').addEventListener('click', () => {
+    const section = document.querySelector('.bg-box');
+    section.scrollIntoView({ behavior: 'smooth' });
+});
+
 const navToggleBtn = document.querySelector('.nav-toggle');
 
 navToggleBtn.addEventListener('click', (e) => {
@@ -19,8 +71,9 @@ navToggleBtn.addEventListener('click', (e) => {
     // toggle class to track open/close state
     navToggleBtn.classList.toggle('open');
 
-    // change icon inside button
-    navToggleBtn.querySelector('.hamburger').textContent = navToggleBtn.classList.contains('open') ? '✖' : '☰';
+    // change icon based on open state
+    navToggleBtn.querySelector('.hamburger').textContent =
+        navToggleBtn.classList.contains('open') ? '✖' : '☰';
 
     // toggle nav menu
     document.body.classList.toggle('nav-open');
@@ -32,7 +85,7 @@ document.addEventListener('click', () => {
         document.body.classList.remove('nav-open');
         navToggleBtn.classList.remove('open');
         navToggleBtn.setAttribute('aria-expanded', 'false');
-        navToggleBtn.querySelector('.hamburger').textContent = '☰';
+        navToggleBtn.querySelector('.hamburger').textContent = '☰';  // reset to hamburger
     }
 });
 
@@ -85,28 +138,6 @@ setInterval(() => {
 
 // Initial slide
 showSlide(index);
-
-// Dropdown toggles (open/close on click) - supports mobile and desktop click toggling
-document.querySelectorAll('.dropdown').forEach(drop => {
-    drop.addEventListener('click', function (e) {
-        e.stopPropagation();
-        this.classList.toggle('open');
-
-        // close others
-        document.querySelectorAll('.dropdown').forEach(other => {
-            if (other !== this) other.classList.remove('open');
-        });
-    });
-});
-
-// Close dropdowns / nav when clicking outside
-document.addEventListener('click', () => {
-    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
-    if (document.body.classList.contains('nav-open')) {
-        document.body.classList.remove('nav-open');
-        navToggle?.setAttribute('aria-expanded', 'false');
-    }
-});
 
 // Close nav or open dropdowns on resize or Escape
 window.addEventListener('resize', () => {
@@ -379,7 +410,9 @@ function resetAutoSlide() {
     }, 4000);
 }
 
-// Events Section
+// ------------------------
+// EVENTS SECTION ANIMATION AND CONTENT SWITCH
+// ------------------------
 function animateImage() {
     const imgWrapper = document.querySelector(".events-image");
 
@@ -434,3 +467,25 @@ setInterval(() => {
 
     animateImage();   // pop-in on content change
 }, 4000);
+
+// ------------------------
+// BACK TO TOP BUTTON
+// ------------------------
+const backToTop = document.getElementById('backToTop');
+
+// Show button after scrolling down 200px
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+    } else {
+        backToTop.style.display = 'none';
+    }
+});
+
+// Scroll to top on click
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});

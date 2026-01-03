@@ -142,7 +142,6 @@ body {
     white-space: nowrap;
 }
 
-
 /* NAV TOGGLE (mobile) */
 
 .nav-toggle {
@@ -358,7 +357,7 @@ body {
 
 /* BUTTON */
 .btn {
-    padding: 8px 18px;
+    padding: 8px 12px;
     border-radius: 5px;
     background-color: white;
     border: none;
@@ -1751,7 +1750,7 @@ body {
 }
 
 .classy-newsletter h4 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 12px;
     color: #184d6a;
@@ -1931,4 +1930,27 @@ body {
     .classy-newsletter p {
         font-size: 10px;
     }
+}
+
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 19px;
+    font-size: 23px;
+    border: none;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    z-index: 9999;
+    font-weight: bold;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+#backToTop:hover {
+    opacity: 1;
 }
