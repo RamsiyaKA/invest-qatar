@@ -1,3 +1,4 @@
+// Stick navbar on scroll
 window.addEventListener("scroll", function () {
     const header = document.querySelector(".navbar");
     if (window.scrollY > 20) {
@@ -23,21 +24,32 @@ document.querySelectorAll('.dropdown').forEach(drop => {
 // Close dropdowns / nav when clicking outside
 document.addEventListener('click', () => {
     document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
-    if (document.body.classList.contains('nav-open')) {
-        document.body.classList.remove('nav-open');
-        navToggle?.setAttribute('aria-expanded', 'false');
+
+    // Make hamburger visible (remove "open" state)
+    if (navToggle?.classList.contains('open')) {
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
     }
+
+    // Remove nav-open class if used
+    document.body.classList.remove('nav-open');
 });
 
+// Dropdowns open on hover
 const dropdowns = document.querySelectorAll('.has-caret');
-
 dropdowns.forEach(drop => {
     drop.addEventListener('mouseenter', () => {
-        // Remove 'open' class from all dropdowns
-        dropdowns.forEach(d => d.classList.remove('open'));
+        // Remove 'open' from all other dropdowns
+        if (d !== drop) {
+            dropdowns.forEach(d => {
+                d.classList.remove('open');
+            });
+        }
 
-        // Add 'open' to the hovered one
-        drop.classList.add('open');
+        // Add 'open' only if not already open
+        if (!drop.classList.contains('open')) {
+            drop.classList.add('open');
+        }
     });
 
     drop.addEventListener('mouseleave', () => {
@@ -46,17 +58,45 @@ dropdowns.forEach(drop => {
     });
 });
 
+
+
 // Smooth scroll to section
 // nav why-qatar scroll to why qatar section
 document.querySelector('.why-qatar').addEventListener('click', () => {
     const section = document.querySelector('.container-fluid');
     section.scrollIntoView({ behavior: 'smooth' });
+    document.body.classList.remove('nav-open');
+    navToggleBtn.classList.remove('open');
+    navToggleBtn.setAttribute('aria-expanded', 'false');
+    navToggleBtn.querySelector('.hamburger').textContent = '☰';
 });
 
 // nav how we help scroll to how we help section
 document.querySelector('.how-we-help').addEventListener('click', () => {
     const section = document.querySelector('.bg-box');
     section.scrollIntoView({ behavior: 'smooth' });
+    document.body.classList.remove('nav-open');
+    navToggleBtn.classList.remove('open');
+    navToggleBtn.setAttribute('aria-expanded', 'false');
+    navToggleBtn.querySelector('.hamburger').textContent = '☰';
+});
+// nav news scroll to news section
+document.querySelector('.go-news').addEventListener('click', () => {
+    const section = document.querySelector('.news-section');
+    section.scrollIntoView({ behavior: 'smooth' });
+    document.body.classList.remove('nav-open');
+    navToggleBtn.classList.remove('open');
+    navToggleBtn.setAttribute('aria-expanded', 'false');
+    navToggleBtn.querySelector('.hamburger').textContent = '☰';
+});
+// nav events scroll to events section
+document.querySelector('.go-events').addEventListener('click', () => {
+    const section = document.querySelector('.events-section');
+    section.scrollIntoView({ behavior: 'smooth' });
+    document.body.classList.remove('nav-open');
+    navToggleBtn.classList.remove('open');
+    navToggleBtn.setAttribute('aria-expanded', 'false');
+    navToggleBtn.querySelector('.hamburger').textContent = '☰';
 });
 
 const navToggleBtn = document.querySelector('.nav-toggle');
